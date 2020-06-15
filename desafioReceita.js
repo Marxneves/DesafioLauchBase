@@ -18,20 +18,36 @@ const usuarios = [
     nome: "Lucia",
     receitas: [9.8, 120.3, 340.2, 45.3],
     despesas: [450.2, 29.9]
+  },
+  {
+    nome: "Fulano",
+    receitas: [10,20.5],
+    despesas: [5, 10.5,30]
   }
 ];
 
-// Percorra o array de usuários e para cada usuário chame uma função chamada calculaSaldo que recebe como parâmetro as receitas e despesas do usuário:
+for(user of usuarios){
+    let resultado=0, saldo=" "
+    resultado = calculaSaldo(user.receitas,user.despesas)
 
-// function calculaSaldo(receitas, despesas) {}
-// Crie uma segunda função que recebe como parâmetro um array de números e retorna a soma deles e use-a para calcular a soma de receitas e despesas dentro da função calculaSaldo:
+    resultado>0 ? saldo='POSITIVO':saldo='NEGATIVO'
 
-// function somaNumeros(numeros) {
-//   // Soma todos números dentro do array "numeros"
-// }
-// A função calculaSaldo deve utilizar a função somaNumeros para calcular a soma de receitas e despesas e no fim retornar o saldo do usuário, ou seja receitas - despesas.
+    console.log(`${user.nome} possui saldo ${saldo} de ${resultado.toFixed(2)}`);
+}
 
-// No fim exiba todos usuários em telas, seu respectivo saldo e SE o saldo é POSITIVO ou NEGATIVO:
+function calculaSaldo(receitas, despesas) {
+    let resultado = 0;
 
-// Fulano possui saldo POSITIVO de 43.3
-// Sicrano possui saldo NEGATIVO de -90.3
+    resultado += somaNumeros(receitas);
+    resultado -= somaNumeros(despesas);
+    return resultado;
+}
+
+function somaNumeros(numeros) {
+    let resultado = 0;
+
+    for(nums of numeros){
+        resultado += nums
+    }
+    return resultado;
+}
